@@ -1,21 +1,43 @@
-# MyToken - An ERC20 Token
+## CREATE AND MINT TOKENS
+For this project, you will write a smart contract to create your own ERC20 token and deploy it using HardHat or Remix. Once deployed, you should be able to interact with it for your walk-through video. From your chosen tool, the contract owner should be able to mint tokens to a provided address and any user should be able to burn and transfer tokens.
 
-MyToken is a simple implementation of an ERC20 token, following the ERC20 standard, with additional functionalities for minting and burning tokens. The contract uses the OpenZeppelin library to ensure security and reliability.
+## Description
+In this project,we have to show functionality are:
+* Only contract owner should be able to mint tokens
+* Any user can transfer tokens
+* Any user can burn tokens
 
+## Getting Started
 
-## Overview
-This project demonstrates the creation of an ERC20 token called "DogeCoin" with the symbol "Dog". The contract includes functionalities for:
-- Minting new tokens by the owner.
-- Burning tokens by any user.
+```javascript
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
-## Prerequisites
-- Solidity ^0.8.0
-- Node.js and npm (for dependency management if using HardHat)
-- MetaMask or another Ethereum wallet for deploying and interacting with the contract on a network
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+//owner 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4
+contract MyToken is ERC20, Ownable  {
+    constructor() ERC20("DogeCoin", "Dog") Ownable(address(uint160(0x5B38Da6a701c568545dCfcB03FcB875f56beddC4)))
+ {
+        _mint(msg.sender, 1000 * 10 ** decimals());
+    }
+    function mint(address to, uint256 amount) external onlyOwner {
+        _mint(to, amount);
+    }
+    function burn(uint256 amount) external {
+        _burn(msg.sender, amount);
+    }
+}
 
-## Setup
-To use this contract, you need to have the OpenZeppelin library installed. If you're using Remix, it can directly import OpenZeppelin contracts from GitHub. For local development using HardHat or Truffle, follow these steps:
+```
 
-1. Initialize a new project (if not already done):
-   ```sh
-   npm init -y
+To compile the code, click on the "Solidity Compiler" tab in the left-hand sidebar. Make sure the "Compiler" option is set to "0.8.0" (or another compatible version), and then click on the "Compile Mytoken.sol" button.
+
+Once the code is compiled, you can deploy the contract by clicking on the "Deploy & Run Transactions" tab in the left-hand sidebar. Select the "Mytoken" contract from the dropdown menu, and then click on the "Deploy" button.
+
+Once the contract is deployed, you can interact with it by calling the sayHello function. Click on the "HelloWorld" contract in the left-hand sidebar, and then click on the  functions one by one. Finally, click on the "transact" button to execute the function.
+## Authors
+Sachin kumar  
+
+## License
+This project is licensed under the MIT License
