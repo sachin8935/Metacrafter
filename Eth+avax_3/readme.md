@@ -47,3 +47,5 @@ contract MyToken is ERC20, Ownable  {
         _burn(msg.sender, amount);
     }
 }
+Author 
+Sachin Kumar
