@@ -1,4 +1,4 @@
-# SPECTACULAR'S TOKEN USING ERC20 BY OPENZEPPLIN challenge_intermediate-4
+# SPECTACULAR'S TOKEN USING ERC20 BY OPENZEPPLIN challenge_intermediate-3
 This smart contract depicts about use of ERC 20.
 
 # Getting Started
